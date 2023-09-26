@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -137,6 +138,8 @@ body {
   5. Improve text rendering
 */
 body {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
