@@ -17,6 +17,7 @@
   --magnolia: hsl(217, 100%, 97%);
   --alabaster: hsl(231, 100%, 99%);
   --white: hsl(0, 0%, 100%);
+  --purple: hsl(243, 100%, 62%);
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -135,6 +136,7 @@ a {
 html,
 body {
   height: 100%;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /*

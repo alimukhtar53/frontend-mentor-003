@@ -6,26 +6,23 @@ import { listOfSteps } from "app/lib/listOfsteps";
 
 interface Props {
   currentStep: number;
-  onClickHandler: (index: number) => void;
 }
 
-function Sidebar({ currentStep, onClickHandler }: Props) {
+function Sidebar({ currentStep }: Props) {
   return (
     <SidebarWrapper>
       <Image src={sidebarDesktop} alt={"sidebar-desktop"} priority={true} />
       <ListWrapper>
         {listOfSteps.map((item, index) => (
-          <span key={index} onClick={() => onClickHandler(index)}>
-            <ListItem>
-              <Count currentStep={currentStep} currentIndex={index}>
-                {index + 1}
-              </Count>
-              <StepsInfo>
-                <Step>Step {index + 1}</Step>
-                <StepTitle>{item}</StepTitle>
-              </StepsInfo>
-            </ListItem>
-          </span>
+          <ListItem key={index}>
+            <Count currentStep={currentStep} currentIndex={index}>
+              {index + 1}
+            </Count>
+            <StepsInfo>
+              <Step>Step {index + 1}</Step>
+              <StepTitle>{item}</StepTitle>
+            </StepsInfo>
+          </ListItem>
         ))}
       </ListWrapper>
     </SidebarWrapper>
@@ -47,7 +44,6 @@ const ListWrapper = styled.div`
 const ListItem = styled.div`
   display: flex;
   gap: 1rem;
-  cursor: pointer;
 `;
 
 const Count = styled.div<{ currentStep: number; currentIndex: number }>`
