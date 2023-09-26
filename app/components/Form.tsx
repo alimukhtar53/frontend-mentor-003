@@ -17,7 +17,7 @@ function Form() {
   return (
     <FormContainer>
       <Sidebar currentStep={currentStep} onClickHandler={onClickHandler} />
-      {STEPS[currentStep]}
+      <StepsContentContainer>{STEPS[currentStep]}</StepsContentContainer>
     </FormContainer>
   );
 }
@@ -30,14 +30,29 @@ const STEPS = [
 ];
 
 const FormContainer = styled.div`
-  width: 940px;
+  min-width: 940px;
   height: 600px;
-  display: flex;
-  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 274px 1fr;
   padding: 1rem;
   border-radius: 15px;
   background: var(--White, #fff);
   box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
+`;
+
+const StepsContentContainer = styled.div`
+  background: var(--sky-blue, #fff);
+  margin: 56px 100px 32px 100px;
+
+  Heading {
+    color: var(--Denim, #022959);
+
+    /* Heading */
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 `;
 
 export default Form;
