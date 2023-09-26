@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
 import sidebarDesktop from "../assets/images/bg-sidebar-desktop.svg";
+import { listOfSteps } from "app/lib/listOfsteps";
 
 function Form() {
   return (
@@ -10,13 +11,15 @@ function Form() {
       <Sidebar>
         <Image src={sidebarDesktop} alt={"sidebar-desktop"} />
         <ListWrapper>
-          <ListItem>
-            <Count>1</Count>
-            <StepsInfo>
-              <Step>Step 1</Step>
-              <StepTitle>Your Info</StepTitle>
-            </StepsInfo>
-          </ListItem>
+          {listOfSteps.map((item, index) => (
+            <ListItem key={index}>
+              <Count>{index + 1}</Count>
+              <StepsInfo>
+                <Step>Step {index + 1}</Step>
+                <StepTitle>{item}</StepTitle>
+              </StepsInfo>
+            </ListItem>
+          ))}
         </ListWrapper>
       </Sidebar>
     </FormContainer>
@@ -70,8 +73,8 @@ const Count = styled.div`
 
 const StepsInfo = styled.div`
   display: flex;
-  width: 86px;
-  height: 33px;
+  width: max-content;
+  max-height: 33px;
   flex-direction: column;
   justify-content: space-between;
 `;
@@ -87,7 +90,6 @@ const Step = styled.span`
 
 const StepTitle = styled.span`
   color: var(--White, #fff);
-  font-family: Ubuntu;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
