@@ -63,7 +63,7 @@ const FormContainer = styled.div`
 const StepsContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 56px 90px 16px 100px;
+  margin: 40px 84px 16px 100px;
 
   Heading {
     color: var(--Denim, #022959);
