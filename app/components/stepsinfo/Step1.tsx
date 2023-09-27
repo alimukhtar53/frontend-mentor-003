@@ -33,7 +33,7 @@ function Step1() {
           id="name"
           placeholder="e.g. Stephen King"
           value={name}
-          onChange={updateForm("name")} // Pass the field name directly
+          onChange={updateForm("name")}
         ></input>
       </InputGroup>
       <Spacer value={24} />
@@ -43,7 +43,7 @@ function Step1() {
           id="email"
           placeholder="e.g. stephenking@lorem.com"
           value={emailAddress}
-          onChange={updateForm("emailAddress")} // Pass the field name directly
+          onChange={updateForm("emailAddress")}
         ></input>
       </InputGroup>
       <Spacer value={24} />
@@ -53,7 +53,7 @@ function Step1() {
           id="phone"
           placeholder="e.g. +1 234 567 890"
           value={phoneNumber}
-          onChange={updateForm("phoneNumber")} // Pass the field name directly
+          onChange={updateForm("phoneNumber")}
         ></input>
       </InputGroup>
     </>

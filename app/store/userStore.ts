@@ -1,5 +1,10 @@
 import { create } from "zustand";
 
+export type Plan = {
+  title: "arcade" | "advanced" | "pro"; // Specify the possible values for title
+  value: number;
+};
+
 type UserState = {
   userInitialInfo: {
     step1: {
@@ -8,6 +13,7 @@ type UserState = {
       phoneNumber: string;
     };
     step2: {
+      plans: Plan[];
       planType: string;
       isYearly: boolean;
     };
@@ -22,6 +28,7 @@ type UserState = {
   setUserInfo: (step: string, data: any) => void;
   goToNextStep: () => void;
   goToPreviousStep: () => void;
+  changePlanType: (planType: string) => void;
   resetForm: () => void;
 };
 
@@ -33,6 +40,11 @@ const useStore = create<UserState>((set) => ({
       phoneNumber: "",
     },
     step2: {
+      plans: [
+        { title: "arcade", value: 9 },
+        { title: "advanced", value: 12 },
+        { title: "pro", value: 15 },
+      ],
       planType: "arcade",
       isYearly: false,
     },
@@ -62,6 +74,19 @@ const useStore = create<UserState>((set) => ({
       currentStep: state.currentStep - 1,
     }));
   },
+  changePlanType: (planType: string) => {
+    set((prevState) => ({
+      userInitialInfo: {
+        ...prevState.userInitialInfo,
+        step2: {
+          ...prevState.userInitialInfo.step2,
+          planType: planType,
+        },
+      },
+      userSelectedOptions: prevState.userSelectedOptions,
+      currentStep: prevState.currentStep,
+    }));
+  },
   resetForm: () => {
     set({
       userInitialInfo: {
@@ -71,6 +96,11 @@ const useStore = create<UserState>((set) => ({
           phoneNumber: "",
         },
         step2: {
+          plans: [
+            { title: "arcade", value: 9 },
+            { title: "advanced", value: 12 },
+            { title: "pro", value: 15 },
+          ],
           planType: "arcade",
           isYearly: false,
         },
