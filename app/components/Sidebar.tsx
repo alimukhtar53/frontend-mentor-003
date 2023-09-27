@@ -31,6 +31,7 @@ function Sidebar({ currentStep }: Props) {
 
 const SidebarWrapper = styled.div`
   position: relative;
+  pointer-events: none;
 `;
 
 const ListWrapper = styled.div`
