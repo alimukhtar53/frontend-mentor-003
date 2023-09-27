@@ -4,14 +4,15 @@ import Spacer from "./Spacer";
 
 interface Props {
   label: string;
+  htmlFor: string;
   children: React.ReactNode;
 }
 
-function InputGroup({ label, children }: Props) {
+function InputGroup({ label, htmlFor, children }: Props) {
   return (
     <InputGroupWrapper>
       <Group>
-        <label>{label}</label>
+        <label htmlFor={htmlFor}>{label}</label>
         {children}
       </Group>
     </InputGroupWrapper>
@@ -42,6 +43,12 @@ const Group = styled.div`
     border: 1px solid var(--Border-Color, #d6d9e6);
     background: var(--White, #fff);
     padding: 12px 0 12px 16px;
+    color: var(--Denim, #022959);
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 
     &:focus {
       outline: none;
