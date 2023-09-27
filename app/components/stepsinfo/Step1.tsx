@@ -18,11 +18,11 @@ function Step1() {
       </InputGroup>
       <Spacer value={24} />
       <InputGroup label="Email Address">
-        <input placeholder="e.g. Stephen King"></input>
+        <input placeholder="e.g. stephenking@lorem.com"></input>
       </InputGroup>
       <Spacer value={24} />
       <InputGroup label="Phone Number">
-        <input placeholder="e.g. Stephen King"></input>
+        <input placeholder="e.g. +1 234 567 890"></input>
       </InputGroup>
     </>
   );

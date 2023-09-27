@@ -16,14 +16,25 @@ function Form() {
       setCurrentStep(currentStep + 1);
     }
   };
+  const handleBackStepClick = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
   return (
     <FormContainer>
       <Sidebar currentStep={currentStep} />
       <StepsContentContainer>
         {STEPS[currentStep]}
         <ButtonWrapper>
-          <Button onClick={handleNextStepClick}>Next Step</Button>
-          <Button onClick={handleNextStepClick}>Go Back</Button>
+          <Button variant={"fill"} onClick={handleNextStepClick}>
+            Next Step
+          </Button>
+          {currentStep > 0 && (
+            <Button variant={"ghost"} onClick={handleBackStepClick}>
+              Go Back
+            </Button>
+          )}
         </ButtonWrapper>
       </StepsContentContainer>
     </FormContainer>

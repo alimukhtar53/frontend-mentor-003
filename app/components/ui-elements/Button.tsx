@@ -1,20 +1,24 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
-interface Props {
-  children: React.ReactNode;
-  onClick: any;
+
+type ButtonVariant = "fill" | "ghost";
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: ButtonVariant;
+  children?: React.ReactNode;
 }
 
-function Button({ children = "Button", onClick }: Props) {
-  return <ButtonWrapper onClick={onClick}>{children}</ButtonWrapper>;
+function Button({ variant, children = "Button", ...restProps }: Props) {
+  let Component: React.ComponentType<any>;
+  if (variant === "fill") Component = FillButton;
+  else if (variant === "ghost") Component = GhostButton;
+  else Component = ButtonBase;
+  return <Component {...restProps}>{children}</Component>;
 }
 
-const ButtonWrapper = styled.button`
+const ButtonBase = styled.button`
   border-radius: 8px;
-  background: var(--Denim, #022959);
   padding: 14px 24px;
 
-  color: var(--White, #fff);
   font-family: Ubuntu;
   font-size: 16px;
   font-style: normal;
@@ -23,10 +27,22 @@ const ButtonWrapper = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s;
+`;
 
+const FillButton = styled(ButtonBase)`
+  background: var(--Denim, #022959);
+  color: var(--White, #fff);
   &:hover {
     background: #164a8a;
+  }
+`;
+const GhostButton = styled(ButtonBase)`
+  background: unset;
+  color: var(--grey, #fff);
+  &:hover {
+    background: var(--grey);
+    color: white;
   }
 `;
 
