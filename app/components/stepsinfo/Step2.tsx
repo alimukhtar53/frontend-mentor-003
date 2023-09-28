@@ -6,9 +6,6 @@ import Description from "../ui-elements/Description";
 import Plans from "../plans/Plans";
 
 function Step2() {
-  const { userInitialInfo, setUserInfo } = useStore();
-  console.log(userInitialInfo, "step2");
-
   return (
     <div>
       <Heading>Select your plan</Heading>

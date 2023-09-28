@@ -3,7 +3,6 @@ import React from "react";
 
 function Step3() {
   const { userInitialInfo } = useStore();
-  console.log(userInitialInfo);
 
   return <div>Step 3</div>;
 }

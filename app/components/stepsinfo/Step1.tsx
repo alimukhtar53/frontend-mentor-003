@@ -17,8 +17,6 @@ function Step1() {
     };
   }
 
-  console.log(userInitialInfo);
-
   return (
     <>
       <Heading>Personal info</Heading>
