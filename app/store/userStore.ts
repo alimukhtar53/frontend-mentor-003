@@ -29,6 +29,7 @@ type UserState = {
   goToNextStep: () => void;
   goToPreviousStep: () => void;
   changePlanType: (planType: string) => void;
+  changePlanDuration: (isYearly: boolean) => void;
   resetForm: () => void;
 };
 
@@ -81,6 +82,19 @@ const useStore = create<UserState>((set) => ({
         step2: {
           ...prevState.userInitialInfo.step2,
           planType: planType,
+        },
+      },
+      userSelectedOptions: prevState.userSelectedOptions,
+      currentStep: prevState.currentStep,
+    }));
+  },
+  changePlanDuration: (isYearly: boolean) => {
+    set((prevState) => ({
+      userInitialInfo: {
+        ...prevState.userInitialInfo,
+        step2: {
+          ...prevState.userInitialInfo.step2,
+          isYearly: isYearly,
         },
       },
       userSelectedOptions: prevState.userSelectedOptions,
