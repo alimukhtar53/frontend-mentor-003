@@ -23,7 +23,7 @@ function Plans() {
       <PlansWrapper>
         {plans.map((plan, index) => (
           <div key={index} onClick={() => changePlanType(plan.title)}>
-            <PlanCard planType={planType} planTitle={plan.title}>
+            <PlanCard plantype={planType} plantitle={plan.title}>
               <Content>
                 <Image
                   src={ICONS[plan.title as Plan["title"]]}
@@ -50,7 +50,7 @@ function Plans() {
             value={String(isYearly)}
             onChange={handleToggle}
           />
-          <RoundSlider isyearly={isYearly} />
+          <RoundSlider isyearly={`${isYearly}`} />
         </Switch>
 
         <span style={isYearly ? { color: "#022959" } : {}}>Yearly</span>
@@ -70,7 +70,7 @@ const PlansWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const PlanCard = styled.div<{ planType: string; planTitle: string }>`
+const PlanCard = styled.div<{ plantype: string; plantitle: string }>`
   width: 138px;
   height: 160px;
   flex-shrink: 0;
@@ -82,7 +82,7 @@ const PlanCard = styled.div<{ planType: string; planTitle: string }>`
   cursor: pointer;
 
   ${(props) =>
-    props.planType === props.planTitle &&
+    props.plantype === props.plantitle &&
     css`
       border-radius: 8px;
       outline: 1px solid var(--Purple, #483eff);
@@ -158,7 +158,7 @@ const Input = styled.input`
 `;
 
 // Styled Slider
-const Slider = styled.span<{ isyearly: boolean }>`
+const Slider = styled.span<{ isyearly: string }>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -192,7 +192,7 @@ const RoundSlider = styled(Slider)`
   border-radius: 34px;
 
   &:before {
-    ${(props) => (props.isyearly ? "right: 4px;" : "left: 4px;")}
+    ${(props) => (props.isyearly === "true" ? "right: 4px;" : "left: 4px;")}
     border-radius: 50%;
   }
 `;

@@ -13,21 +13,13 @@ function Addons() {
   const { isYearly } = step2;
   const { addons } = step3;
 
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
-  console.log(userInitialInfo);
   return (
     <AddonsWrapper>
       {addons.map((addon, index) => (
         <div key={index}>
-          <Addon isChecked={isChecked}>
+          <Addon ischecked={`${isChecked}`}>
             <AddonContent>
-              <Checkbox
-                addonTitle={addon.title}
-                // isChecked={isChecked}
-                // handleCheckboxChange={handleCheckboxChange}
-              ></Checkbox>
+              <Checkbox addonTitle={addon.title}></Checkbox>
               <AddonDetails>
                 <AddonTitle>{addon.title}</AddonTitle>
                 <AddonDescription>{ADDONINFO[addon.title]}</AddonDescription>
@@ -52,7 +44,7 @@ const AddonsWrapper = styled.div`
   gap: 1rem;
   flex-direction: column;
 `;
-const Addon = styled.div<{ isChecked: boolean }>`
+const Addon = styled.div<{ ischecked: string }>`
   height: 81px;
   width: 100%;
   border-radius: 8px;
@@ -60,7 +52,7 @@ const Addon = styled.div<{ isChecked: boolean }>`
   background: var(--White, #fff);
 
   ${(props) =>
-    props.isChecked
+    props.ischecked === "true"
       ? `border-radius: 8px;
     border: 1px solid var(--Purple, #483EFF);
     background: var(--Very-Light-Grey, #F8F9FF);`

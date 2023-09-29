@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styled from "styled-components";
+import styled, { StyleSheetManager } from "styled-components";
 import Sidebar from "./Sidebar";
 import Step1 from "./stepsInfo/Step1";
 import Step2 from "./stepsInfo/Step2";
@@ -22,22 +22,24 @@ function Form() {
     }
   };
   return (
-    <FormContainer>
-      <Sidebar currentStep={currentStep} />
-      <StepsContentContainer>
-        {STEPS[currentStep]}
-        <ButtonWrapper>
-          <Button variant={"fill"} onClick={handleNextStepClick}>
-            Next Step
-          </Button>
-          {currentStep > 0 && (
-            <Button variant={"ghost"} onClick={handleBackStepClick}>
-              Go Back
+    <StyleSheetManager shouldForwardProp={() => true}>
+      <FormContainer>
+        <Sidebar currentStep={currentStep} />
+        <StepsContentContainer>
+          {STEPS[currentStep]}
+          <ButtonWrapper>
+            <Button variant={"fill"} onClick={handleNextStepClick}>
+              Next Step
             </Button>
-          )}
-        </ButtonWrapper>
-      </StepsContentContainer>
-    </FormContainer>
+            {currentStep > 0 && (
+              <Button variant={"ghost"} onClick={handleBackStepClick}>
+                Go Back
+              </Button>
+            )}
+          </ButtonWrapper>
+        </StepsContentContainer>
+      </FormContainer>
+    </StyleSheetManager>
   );
 }
 
