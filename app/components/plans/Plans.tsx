@@ -50,7 +50,7 @@ function Plans() {
             value={String(isYearly)}
             onChange={handleToggle}
           />
-          <RoundSlider isYearly={isYearly} />
+          <RoundSlider isyearly={isYearly} />
         </Switch>
 
         <span style={isYearly ? { color: "#022959" } : {}}>Yearly</span>
@@ -158,7 +158,7 @@ const Input = styled.input`
 `;
 
 // Styled Slider
-const Slider = styled.span<{ isYearly: boolean }>`
+const Slider = styled.span<{ isyearly: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -192,7 +192,7 @@ const RoundSlider = styled(Slider)`
   border-radius: 34px;
 
   &:before {
-    ${(props) => (props.isYearly ? "right: 4px;" : "left: 4px;")}
+    ${(props) => (props.isyearly ? "right: 4px;" : "left: 4px;")}
     border-radius: 50%;
   }
 `;

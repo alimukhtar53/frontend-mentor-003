@@ -1,7 +1,12 @@
 import { create } from "zustand";
 
 export type Plan = {
-  title: "arcade" | "advanced" | "pro"; // Specify the possible values for title
+  title: "arcade" | "advanced" | "pro";
+  value: number;
+};
+
+export type Addons = {
+  title: "Online Services" | "Larger Storage" | "Customizable Profile";
   value: number;
 };
 
@@ -18,9 +23,8 @@ type UserState = {
       isYearly: boolean;
     };
     step3: {
-      onlineServices: number;
-      largerStorage: number;
-      customizableProfile: number;
+      addons: Addons[];
+      selectedAddons: string[];
     };
   };
   userSelectedOptions: Record<string, any>;
@@ -29,6 +33,7 @@ type UserState = {
   goToNextStep: () => void;
   goToPreviousStep: () => void;
   changePlanType: (planType: string) => void;
+  selectAddons: (planType: string) => void;
   changePlanDuration: (isYearly: boolean) => void;
   resetForm: () => void;
 };
@@ -50,9 +55,12 @@ const useStore = create<UserState>((set) => ({
       isYearly: false,
     },
     step3: {
-      onlineServices: 1,
-      largerStorage: 2,
-      customizableProfile: 2,
+      addons: [
+        { title: "Online Services", value: 1 },
+        { title: "Larger Storage", value: 2 },
+        { title: "Customizable Profile", value: 2 },
+      ],
+      selectedAddons: [],
     },
   },
   userSelectedOptions: {},
@@ -88,6 +96,20 @@ const useStore = create<UserState>((set) => ({
       currentStep: prevState.currentStep,
     }));
   },
+  selectAddons: (addon: string) => {
+    set((prevState) => ({
+      userInitialInfo: {
+        ...prevState.userInitialInfo,
+        step3: {
+          ...prevState.userInitialInfo.step3,
+          selectedAddons: [
+            ...prevState.userInitialInfo.step3.selectedAddons,
+            addon,
+          ],
+        },
+      },
+    }));
+  },
   changePlanDuration: (isYearly: boolean) => {
     set((prevState) => ({
       userInitialInfo: {
@@ -119,9 +141,12 @@ const useStore = create<UserState>((set) => ({
           isYearly: false,
         },
         step3: {
-          onlineServices: 1,
-          largerStorage: 2,
-          customizableProfile: 2,
+          addons: [
+            { title: "Online Services", value: 1 },
+            { title: "Larger Storage", value: 2 },
+            { title: "Customizable Profile", value: 2 },
+          ],
+          selectedAddons: [],
         },
       },
       userSelectedOptions: {},

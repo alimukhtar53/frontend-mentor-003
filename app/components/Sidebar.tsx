@@ -15,7 +15,7 @@ function Sidebar({ currentStep }: Props) {
       <ListWrapper>
         {listOfSteps.map((item, index) => (
           <ListItem key={index}>
-            <Count currentStep={currentStep} currentIndex={index}>
+            <Count currentstep={currentStep} currentindex={index}>
               {index + 1}
             </Count>
             <StepsInfo>
@@ -47,7 +47,7 @@ const ListItem = styled.div`
   gap: 1rem;
 `;
 
-const Count = styled.div<{ currentStep: number; currentIndex: number }>`
+const Count = styled.div<{ currentstep: number; currentindex: number }>`
   width: 33px;
   height: 33px;
   border-radius: 50%;
@@ -65,7 +65,7 @@ const Count = styled.div<{ currentStep: number; currentIndex: number }>`
   transition: background-color 0.3s ease;
 
   ${(props) =>
-    props.currentStep === props.currentIndex &&
+    props.currentstep === props.currentindex &&
     `
     color: var(--denim, #022959);
     background-color: var(--sky-blue, #bee2fd);

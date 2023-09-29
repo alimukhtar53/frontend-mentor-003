@@ -18,6 +18,7 @@
   --very-light-grey: hsl(231, 100%, 99%);
   --white: hsl(0, 0%, 100%);
   --purple: hsl(243, 100%, 62%);
+  --border-color: hsl(229, 24%, 87%);
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -193,4 +194,34 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+.input checkbox {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d6d9e6;
+  transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+}
+
+/* Use a class to apply styles when checked */
+.CheckboxRoot.checked {
+  background-color: #483eff;
+  color: white;
+}
+
+.checkBox:checked {
+  border-radius: 14px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  border: none;
+  outline: none;
+  height: 18px;
+  accent-color: #483eff;
 }
