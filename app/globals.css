@@ -225,3 +225,13 @@ input[type="checkbox"] {
   height: 18px;
   accent-color: #483eff;
 }
+
+::-moz-selection {
+  color: white;
+  background: var(--denim, #483eff);
+}
+
+::selection {
+  color: white;
+  background: var(--denim, #483eff);
+}
