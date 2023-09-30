@@ -7,18 +7,19 @@ import Step2 from "./stepsInfo/Step2";
 import Step3 from "./stepsInfo/Step3";
 import Step4 from "./stepsInfo/Step4";
 import Button from "./ui-elements/Button";
+import useStore from "app/store/userStore";
 
 function Form() {
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const { currentStep, goToNextStep, goToPreviousStep } = useStore();
 
   const handleNextStepClick = () => {
     if (currentStep < STEPS.length - 1) {
-      setCurrentStep(currentStep + 1);
+      goToNextStep(1);
     }
   };
   const handleBackStepClick = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      goToPreviousStep(1);
     }
   };
   return (

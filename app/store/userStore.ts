@@ -30,8 +30,8 @@ type UserState = {
   userSelectedOptions: Record<string, any>;
   currentStep: number;
   setUserInfo: (step: string, data: any) => void;
-  goToNextStep: () => void;
-  goToPreviousStep: () => void;
+  goToNextStep: (incrementBy: number) => void;
+  goToPreviousStep: (decrementBy: number) => void;
   changePlanType: (planType: string) => void;
   selectAddons: (planType: string) => void;
   changePlanDuration: (isYearly: boolean) => void;
@@ -64,7 +64,7 @@ const useStore = create<UserState>((set) => ({
     },
   },
   userSelectedOptions: {},
-  currentStep: 1,
+  currentStep: 0,
   setUserInfo: (step, data) => {
     set((state) => ({
       userInitialInfo: {
@@ -73,14 +73,14 @@ const useStore = create<UserState>((set) => ({
       },
     }));
   },
-  goToNextStep: () => {
+  goToNextStep: (incrementBy: number) => {
     set((state) => ({
-      currentStep: state.currentStep + 1,
+      currentStep: state.currentStep + incrementBy,
     }));
   },
-  goToPreviousStep: () => {
+  goToPreviousStep: (decrementBy: number) => {
     set((state) => ({
-      currentStep: state.currentStep - 1,
+      currentStep: state.currentStep - decrementBy,
     }));
   },
   changePlanType: (planType: string) => {

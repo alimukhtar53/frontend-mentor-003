@@ -1,17 +1,28 @@
 import useStore from "app/store/userStore";
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import Step2 from "../stepsInfo/Step2";
 
 function Summary() {
-  const { userInitialInfo } = useStore();
+  const { userInitialInfo, goToPreviousStep } = useStore();
+  const { step2 } = userInitialInfo;
+  const { planType, isYearly } = step2;
+
   console.log(userInitialInfo);
+  const planDuration = isYearly ? "year" : "month";
+
   return (
     <>
       <SummaryContainer>
         <SelectedPlan>
           <PlanWrapper>
-            <PlanTitle>Arcade (Monthly)</PlanTitle>
-            <PlanChange>Change</PlanChange>
+            <PlanTitle>
+              {planType} ({planDuration + "ly"})
+            </PlanTitle>
+            <PlanChange>
+              <span onClick={() => goToPreviousStep(2)}>Change</span>
+            </PlanChange>
           </PlanWrapper>
           <PlanPricing>$9/mo</PlanPricing>
         </SelectedPlan>
@@ -28,7 +39,7 @@ function Summary() {
         </AddonsWrapper>
       </SummaryContainer>
       <TotalWrapper>
-        <Total>Total (per month)</Total>
+        <Total>Total (per {planDuration})</Total>
         <TotalPrice>+$12/mo</TotalPrice>
       </TotalWrapper>
     </>
@@ -65,6 +76,7 @@ const PlanWrapper = styled.div`
   gap: 7px;
 `;
 const PlanTitle = styled.div`
+  text-transform: capitalize;
   color: var(--denim, #022959);
   font-size: 16px;
   font-style: normal;
@@ -79,9 +91,11 @@ const PlanChange = styled.div`
   font-weight: 400;
   line-height: 20px; /* 142.857% */
   text-decoration-line: underline;
+  cursor: pointer;
 `;
 
 const PlanPricing = styled(PlanTitle)`
+  text-transform: lowercase;
   font-weight: 700;
   line-height: 20px; /* 125% */
 `;
