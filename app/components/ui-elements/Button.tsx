@@ -18,7 +18,7 @@ function Button({ variant, children = "Button", ...restProps }: Props) {
 
 const ButtonBase = styled.button`
   border-radius: 8px;
-  padding: 15px 24px;
+  padding: 15px 24.5px;
 
   font-family: Ubuntu;
   font-size: 16px;
@@ -32,8 +32,8 @@ const ButtonBase = styled.button`
 `;
 
 const FillButton = styled(ButtonBase)`
-  background: var(--Denim, #022959);
-  color: var(--White, #fff);
+  background: var(--denim, #022959);
+  color: var(--white, #fff);
   &:hover {
     background: #164a8a;
   }
