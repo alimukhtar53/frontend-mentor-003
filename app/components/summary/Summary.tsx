@@ -110,6 +110,11 @@ const PlanChange = styled.span`
   text-decoration-line: underline;
   cursor: pointer;
   width: max-content;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--purple, #483eff);
+  }
 `;
 
 const PlanPricing = styled(PlanTitle)`

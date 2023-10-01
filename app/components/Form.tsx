@@ -29,13 +29,21 @@ function Form() {
         <StepsContentContainer>
           {STEPS[currentStep]}
           <ButtonWrapper>
-            <Button variant={"fill"} onClick={handleNextStepClick}>
-              Next Step
-            </Button>
-            {currentStep > 0 && (
-              <Button variant={"ghost"} onClick={handleBackStepClick}>
-                Go Back
+            {currentStep === 3 ? (
+              <Button variant={"success"} onClick={handleNextStepClick}>
+                Confirm
               </Button>
+            ) : (
+              <>
+                <Button variant={"fill"} onClick={handleNextStepClick}>
+                  Next Step
+                </Button>
+                {currentStep > 0 && (
+                  <Button variant={"ghost"} onClick={handleBackStepClick}>
+                    Go Back
+                  </Button>
+                )}
+              </>
             )}
           </ButtonWrapper>
         </StepsContentContainer>
@@ -49,6 +57,7 @@ const STEPS = [
   <Step2 key={1} />,
   <Step3 key={3} />,
   <Step4 key={4} />,
+  <Step1 key={5} />,
 ];
 
 const FormContainer = styled.div`
