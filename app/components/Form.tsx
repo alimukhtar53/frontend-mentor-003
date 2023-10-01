@@ -2,10 +2,10 @@
 import React from "react";
 import styled, { StyleSheetManager } from "styled-components";
 import Sidebar from "./Sidebar";
-import Step1 from "./stepsInfo/Step1";
-import Step2 from "./stepsInfo/Step2";
-import Step3 from "./stepsInfo/Step3";
-import Step4 from "./stepsInfo/Step4";
+import Step1 from "@/components/stepsinfo/Step1";
+import Step2 from "@/components/stepsinfo/Step2";
+import Step3 from "@/components/stepsinfo/Step3";
+import Step4 from "@/components/stepsinfo/Step4";
 import Button from "./ui-elements/Button";
 import useStore from "app/store/userStore";
 

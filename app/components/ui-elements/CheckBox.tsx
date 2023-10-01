@@ -12,7 +12,6 @@ const Checkbox = ({ addon }: Props) => {
   const { step3 } = userInitialInfo;
   const { addons } = step3;
   const { title } = addon;
-  console.log("addon:", addon);
 
   // Use useState to manage the selected state for each checkbox individually
   const [isChecked, setIsChecked] = useState(
