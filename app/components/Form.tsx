@@ -1,8 +1,8 @@
 "use client";
-import Step1 from "@/components/stepsinfo/Step1";
-import Step2 from "@/components/stepsinfo/Step2";
-import Step3 from "@/components/stepsinfo/Step3";
-import Step4 from "@/components/stepsinfo/Step4";
+import Step1 from "@/components/stepsInfo/Step1";
+import Step2 from "@/components/stepsInfo/Step2";
+import Step3 from "@/components/stepsInfo/Step3";
+import Step4 from "@/components/stepsInfo/Step4";
 import Thankyou from "@/components/thank-you/Thankyou";
 import { listOfSteps } from "app/lib/listOfsteps";
 import useStore from "app/store/userStore";

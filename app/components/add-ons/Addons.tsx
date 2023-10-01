@@ -5,20 +5,40 @@ import styled from "styled-components";
 import Checkbox from "../ui-elements/CheckBox";
 
 function Addons() {
-  const [isChecked, setIsChecked] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false);
   const { userInitialInfo } = useStore();
   const { step2, step3 } = userInitialInfo;
   const { isYearly } = step2;
   const { addons } = step3;
   const planDurationPlaceholder = isYearly ? "yr" : "mo";
 
+  const [checkboxStates, setCheckboxStates] = useState(
+    addons.reduce((acc: any, addon) => {
+      acc[addon.title] = false; // Initialize all checkboxes as unchecked
+      return acc;
+    }, {})
+  );
+
+  const handleCheckboxChange = (addonTitle: string, isChecked: boolean) => {
+    setCheckboxStates((prevState: any) => ({
+      ...prevState,
+      [addonTitle]: isChecked,
+    }));
+  };
+
   return (
     <AddonsWrapper>
       {addons.map((addon, index) => (
         <div key={index}>
-          <Addon ischecked={`${isChecked}`}>
+          <Addon ischecked={`${checkboxStates[addon.title]}`}>
             <AddonContent>
-              <Checkbox addon={addon}></Checkbox>
+              <Checkbox
+                addon={addon}
+                isChecked={checkboxStates[addon.title]}
+                onCheckboxChange={(isChecked: boolean) =>
+                  handleCheckboxChange(addon.title, isChecked)
+                }
+              ></Checkbox>
               <AddonDetails>
                 <AddonTitle>{addon.title}</AddonTitle>
                 <AddonDescription>{ADDONINFO[addon.title]}</AddonDescription>
@@ -50,15 +70,19 @@ const Addon = styled.div<{ ischecked: string }>`
   height: 81px;
   width: 100%;
   border-radius: 8px;
-  border: 1px solid var(--Border-Color, #d6d9e6);
-  background: var(--White, #fff);
+  outline: 1px solid;
+  outline-color: var(--light-gray, #d6d9e6);
+  background: var(--white, #fff);
+  transition: all 0.3s;
 
-  ${(props) =>
+  outline-color: ${(props) =>
     props.ischecked === "true"
-      ? `border-radius: 8px;
-    border: 1px solid var(--Purple, #483EFF);
-    background: var(--Very-Light-Grey, #F8F9FF);`
-      : ""}
+      ? "var(--purple, #483EFF)"
+      : "var(--light-gray, #d6d9e6)"};
+  background: ${(props) =>
+    props.ischecked === "false"
+      ? "var(--very-light-grey, #F8F9FF)"
+      : "var(--white, #fff)"};
 `;
 const AddonContent = styled.div`
   display: grid;
