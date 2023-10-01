@@ -1,16 +1,25 @@
 import useStore from "app/store/userStore";
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import Step2 from "../stepsInfo/Step2";
+import { getPlanValue } from "app/lib/getPlanPrice";
+import usePlanValue from "app/hooks/usePlanValue";
+import usePlanTotal from "app/hooks/usePlanTotal";
 
 function Summary() {
   const { userInitialInfo, goToPreviousStep } = useStore();
-  const { step2 } = userInitialInfo;
+  const { step2, step3 } = userInitialInfo;
+  const { selectedAddons } = step3;
   const { planType, isYearly } = step2;
 
-  console.log(userInitialInfo);
+  const planPrice = usePlanValue();
+  const planTotal = usePlanTotal();
+
   const planDuration = isYearly ? "year" : "month";
+  const planDurationPlaceholder = isYearly ? "yr" : "mo";
+
+  const getAddonPrice = (price: number) => {
+    return getPlanValue(price, isYearly);
+  };
 
   return (
     <>
@@ -24,23 +33,31 @@ function Summary() {
               <span onClick={() => goToPreviousStep(2)}>Change</span>
             </PlanChange>
           </PlanWrapper>
-          <PlanPricing>$9/mo</PlanPricing>
+          <PlanPricing>
+            ${planPrice}/{planDurationPlaceholder}
+          </PlanPricing>
         </SelectedPlan>
-        <hr />
-        <AddonsWrapper>
-          <AddonDetails>
-            <AddonTitle>Online Service</AddonTitle>
-            <AddonPrice>+$1/mo</AddonPrice>
-          </AddonDetails>
-          <AddonDetails>
-            <AddonTitle>Online Service</AddonTitle>
-            <AddonPrice>+$1/mo</AddonPrice>
-          </AddonDetails>
-        </AddonsWrapper>
+        {selectedAddons.length > 0 && (
+          <>
+            <hr />
+            <AddonsWrapper>
+              {selectedAddons.map((addon, index) => (
+                <AddonDetails key={index}>
+                  <AddonTitle>{addon.title}</AddonTitle>
+                  <AddonPrice>
+                    +${getAddonPrice(addon.value)}/{planDurationPlaceholder}
+                  </AddonPrice>
+                </AddonDetails>
+              ))}
+            </AddonsWrapper>
+          </>
+        )}
       </SummaryContainer>
       <TotalWrapper>
         <Total>Total (per {planDuration})</Total>
-        <TotalPrice>+$12/mo</TotalPrice>
+        <TotalPrice>
+          +${planTotal()}/{planDurationPlaceholder}
+        </TotalPrice>
       </TotalWrapper>
     </>
   );

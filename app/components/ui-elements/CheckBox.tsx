@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import useStore from "app/store/userStore";
+import useStore, { Addons } from "app/store/userStore";
 import styled, { keyframes } from "styled-components";
 
 interface Props {
-  addonTitle: string;
+  addon: Addons;
   isChecked?: boolean;
 }
 
-const Checkbox = ({ addonTitle }: Props) => {
+const Checkbox = ({ addon }: Props) => {
   const { userInitialInfo } = useStore();
   const { step3 } = userInitialInfo;
+  const { addons } = step3;
+  const { title } = addon;
+  console.log("addon:", addon);
 
   // Use useState to manage the selected state for each checkbox individually
   const [isChecked, setIsChecked] = useState(
-    step3.selectedAddons.includes(addonTitle)
+    step3.selectedAddons.some((addon) => addon.title === title)
   );
 
   const handleCheckBoxChange = () => {
@@ -23,11 +26,14 @@ const Checkbox = ({ addonTitle }: Props) => {
     // Update the user store based on the isChecked state
     if (!isChecked) {
       // If the checkbox is checked, add the value to the selectedAddons
-      step3.selectedAddons.push(addonTitle);
+      const addon = addons.find((addon) => addon.title === title);
+      if (addon) {
+        step3.selectedAddons.push(addon);
+      }
     } else {
       // If the checkbox is unchecked, remove the value from selectedAddons
       step3.selectedAddons = step3.selectedAddons.filter(
-        (item) => item !== addonTitle
+        (item) => item.title !== title
       );
     }
   };
@@ -36,7 +42,7 @@ const Checkbox = ({ addonTitle }: Props) => {
     <>
       <input
         type="checkbox"
-        value={addonTitle}
+        value={addon.title}
         onChange={handleCheckBoxChange}
         checked={isChecked}
         id="cbx"

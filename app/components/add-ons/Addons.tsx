@@ -19,7 +19,7 @@ function Addons() {
         <div key={index}>
           <Addon ischecked={`${isChecked}`}>
             <AddonContent>
-              <Checkbox addonTitle={addon.title}></Checkbox>
+              <Checkbox addon={addon}></Checkbox>
               <AddonDetails>
                 <AddonTitle>{addon.title}</AddonTitle>
                 <AddonDescription>{ADDONINFO[addon.title]}</AddonDescription>

@@ -24,7 +24,7 @@ type UserState = {
     };
     step3: {
       addons: Addons[];
-      selectedAddons: string[];
+      selectedAddons: Addons[];
     };
   };
   userSelectedOptions: Record<string, any>;
@@ -33,7 +33,7 @@ type UserState = {
   goToNextStep: (incrementBy: number) => void;
   goToPreviousStep: (decrementBy: number) => void;
   changePlanType: (planType: string) => void;
-  selectAddons: (planType: string) => void;
+  selectAddons: (addon: Addons) => void;
   changePlanDuration: (isYearly: boolean) => void;
   resetForm: () => void;
 };
@@ -96,15 +96,15 @@ const useStore = create<UserState>((set) => ({
       currentStep: prevState.currentStep,
     }));
   },
-  selectAddons: (addon: string) => {
-    set((prevState) => ({
+  selectAddons: (addon: Addons) => {
+    set((prevState: any) => ({
       userInitialInfo: {
         ...prevState.userInitialInfo,
         step3: {
           ...prevState.userInitialInfo.step3,
           selectedAddons: [
             ...prevState.userInitialInfo.step3.selectedAddons,
-            addon,
+            { title: addon.title, value: addon.value },
           ],
         },
       },
