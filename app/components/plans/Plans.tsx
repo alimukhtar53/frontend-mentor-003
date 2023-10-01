@@ -1,12 +1,11 @@
+import advancedIcon from "app/assets/images/icon-advanced.svg";
+import arcadeIcon from "app/assets/images/icon-arcade.svg";
+import proIcon from "app/assets/images/icon-pro.svg";
+import { getPlanValue } from "app/lib/getPlanPrice";
 import useStore, { Plan } from "app/store/userStore";
 import Image from "next/image";
-import React from "react";
 import styled, { css } from "styled-components";
-import arcadeIcon from "app/assets/images/icon-arcade.svg";
-import advancedIcon from "app/assets/images/icon-advanced.svg";
-import proIcon from "app/assets/images/icon-pro.svg";
 import Spacer from "../ui-elements/Spacer";
-import { getPlanValue } from "app/lib/getPlanPrice";
 
 function Plans() {
   const { userInitialInfo, changePlanType, changePlanDuration } = useStore();

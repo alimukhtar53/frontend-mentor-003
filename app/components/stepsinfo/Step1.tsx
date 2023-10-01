@@ -1,9 +1,9 @@
-import React from "react";
-import Heading from "../ui-elements/Heading";
-import Description from "../ui-elements/Description";
-import Spacer from "../ui-elements/Spacer";
-import InputGroup from "../ui-elements/InputGroup";
 import useStore from "app/store/userStore";
+import React from "react";
+import Description from "../ui-elements/Description";
+import Heading from "../ui-elements/Heading";
+import InputGroup from "../ui-elements/InputGroup";
+import Spacer from "../ui-elements/Spacer";
 
 function Step1() {
   const { userInitialInfo, setUserInfo } = useStore();

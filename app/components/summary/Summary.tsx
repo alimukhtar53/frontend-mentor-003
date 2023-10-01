@@ -1,9 +1,8 @@
-import useStore from "app/store/userStore";
-import React from "react";
-import styled from "styled-components";
-import { getPlanValue } from "app/lib/getPlanPrice";
-import usePlanValue from "app/hooks/usePlanValue";
 import usePlanTotal from "app/hooks/usePlanTotal";
+import usePlanValue from "app/hooks/usePlanValue";
+import { getPlanValue } from "app/lib/getPlanPrice";
+import useStore from "app/store/userStore";
+import styled from "styled-components";
 
 function Summary() {
   const { userInitialInfo, goToPreviousStep } = useStore();

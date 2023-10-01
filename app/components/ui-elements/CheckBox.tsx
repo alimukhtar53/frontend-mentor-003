@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import useStore, { Addons } from "app/store/userStore";
+import { useState } from "react";
 
 interface Props {
   addon: Addons;

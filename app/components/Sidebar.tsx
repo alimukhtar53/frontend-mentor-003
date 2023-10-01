@@ -1,8 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
-import sidebarDesktop from "../assets/images/bg-sidebar-desktop.svg";
 import { listOfSteps } from "app/lib/listOfsteps";
+import Image from "next/image";
+import styled from "styled-components";
+import sidebarDesktop from "../assets/images/bg-sidebar-desktop.svg";
 
 interface Props {
   currentStep: number;

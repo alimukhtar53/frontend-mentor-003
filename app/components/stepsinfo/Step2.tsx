@@ -1,9 +1,7 @@
-import useStore from "app/store/userStore";
-import React from "react";
+import Plans from "../plans/Plans";
+import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
-import Description from "../ui-elements/Description";
-import Plans from "../plans/Plans";
 
 function Step2() {
   return (

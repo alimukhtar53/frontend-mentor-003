@@ -1,8 +1,7 @@
-import React from "react";
 import Summary from "../summary/Summary";
+import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
-import Description from "../ui-elements/Description";
 
 function Step4() {
   return (

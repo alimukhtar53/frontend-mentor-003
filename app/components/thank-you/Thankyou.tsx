@@ -1,9 +1,8 @@
-import React from "react";
 import thankyou from "app/assets/images/icon-thank-you.svg";
-import styled from "styled-components";
 import Image from "next/image";
-import Heading from "../ui-elements/Heading";
+import styled from "styled-components";
 import Description from "../ui-elements/Description";
+import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
 
 function Thankyou() {

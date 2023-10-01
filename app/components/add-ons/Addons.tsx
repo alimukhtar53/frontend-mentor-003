@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import { getPlanValue } from "app/lib/getPlanPrice";
+import useStore from "app/store/userStore";
+import { useState } from "react";
 import styled from "styled-components";
 import Checkbox from "../ui-elements/CheckBox";
-import { useId } from "react";
-import usePlanValue from "app/hooks/usePlanValue";
-import useStore from "app/store/userStore";
-import { getPlanValue } from "app/lib/getPlanPrice";
 
 function Addons() {
   const [isChecked, setIsChecked] = useState(false);
-  const { userInitialInfo, selectAddons } = useStore();
+  const { userInitialInfo } = useStore();
   const { step2, step3 } = userInitialInfo;
   const { isYearly } = step2;
   const { addons } = step3;

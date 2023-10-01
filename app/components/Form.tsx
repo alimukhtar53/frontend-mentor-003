@@ -1,15 +1,14 @@
 "use client";
-import React from "react";
-import styled, { StyleSheetManager } from "styled-components";
-import Sidebar from "./Sidebar";
 import Step1 from "@/components/stepsinfo/Step1";
 import Step2 from "@/components/stepsinfo/Step2";
 import Step3 from "@/components/stepsinfo/Step3";
 import Step4 from "@/components/stepsinfo/Step4";
-import Button from "./ui-elements/Button";
-import useStore from "app/store/userStore";
 import Thankyou from "@/components/thank-you/Thankyou";
 import { listOfSteps } from "app/lib/listOfsteps";
+import useStore from "app/store/userStore";
+import styled, { StyleSheetManager } from "styled-components";
+import Sidebar from "./Sidebar";
+import Button from "./ui-elements/Button";
 
 function Form() {
   const { currentStep, goToNextStep, goToPreviousStep, resetForm } = useStore();

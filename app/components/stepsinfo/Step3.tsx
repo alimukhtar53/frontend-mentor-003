@@ -1,11 +1,7 @@
-import useStore from "app/store/userStore";
-import React from "react";
+import Addons from "../add-ons/Addons";
+import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
-import Description from "../ui-elements/Description";
-import Addons from "../add-ons/Addons";
-import { getPlanValue } from "app/lib/getPlanPrice";
-import usePlanValue from "app/hooks/usePlanValue";
 
 function Step3() {
   return (
