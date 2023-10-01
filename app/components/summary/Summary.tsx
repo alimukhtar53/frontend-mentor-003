@@ -101,7 +101,7 @@ const PlanTitle = styled.div`
   line-height: normal;
 `;
 
-const PlanChange = styled.div`
+const PlanChange = styled.span`
   color: var(--grey, #9699aa);
   font-size: 14px;
   font-style: normal;
@@ -109,6 +109,7 @@ const PlanChange = styled.div`
   line-height: 20px; /* 142.857% */
   text-decoration-line: underline;
   cursor: pointer;
+  width: max-content;
 `;
 
 const PlanPricing = styled(PlanTitle)`
