@@ -80,7 +80,7 @@ const Addon = styled.div<{ ischecked: string }>`
       ? "var(--purple, #483EFF)"
       : "var(--light-gray, #d6d9e6)"};
   background: ${(props) =>
-    props.ischecked === "false"
+    props.ischecked === "true"
       ? "var(--very-light-grey, #F8F9FF)"
       : "var(--white, #fff)"};
 `;

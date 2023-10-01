@@ -81,6 +81,7 @@ const FormContainer = styled.div`
   padding: 1rem;
   border-radius: 15px;
   font-family: Ubuntu;
+  font-feature-settings: "clig" off, "liga" off;
   background: var(--White, #fff);
   box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
 `;

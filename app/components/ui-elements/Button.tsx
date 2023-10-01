@@ -18,7 +18,7 @@ function Button({ variant, children = "Button", ...restProps }: Props) {
 
 const ButtonBase = styled.button`
   border-radius: 8px;
-  padding: 14px 24px;
+  padding: 15px 24px;
 
   font-family: Ubuntu;
   font-size: 16px;
