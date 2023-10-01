@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useStore, { Addons } from "app/store/userStore";
-import styled, { keyframes } from "styled-components";
 
 interface Props {
   addon: Addons;
@@ -44,7 +43,7 @@ const Checkbox = ({ addon }: Props) => {
         value={addon.title}
         onChange={handleCheckBoxChange}
         checked={isChecked}
-        id="cbx"
+        id={addon.title}
         className="hidden-xs-up"
       />
     </>

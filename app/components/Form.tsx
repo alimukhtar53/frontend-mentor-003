@@ -8,15 +8,29 @@ import Step3 from "@/components/stepsinfo/Step3";
 import Step4 from "@/components/stepsinfo/Step4";
 import Button from "./ui-elements/Button";
 import useStore from "app/store/userStore";
+import Thankyou from "@/components/thank-you/Thankyou";
+import { listOfSteps } from "app/lib/listOfsteps";
 
 function Form() {
-  const { currentStep, goToNextStep, goToPreviousStep } = useStore();
+  const { currentStep, goToNextStep, goToPreviousStep, resetForm } = useStore();
+  const totalSteps = listOfSteps.length; // 4
+  const lastStep = totalSteps - 1; // 3
+
+  let timeoutId: ReturnType<typeof setTimeout>;
 
   const handleNextStepClick = () => {
     if (currentStep < STEPS.length - 1) {
+      // Cancel the timeout if it's set
+      clearTimeout(timeoutId);
       goToNextStep(1);
     }
+
+    if (currentStep === lastStep) {
+      // Set a timeout to reset the form after 10 seconds
+      timeoutId = setTimeout(resetForm, 10000);
+    }
   };
+
   const handleBackStepClick = () => {
     if (currentStep > 0) {
       goToPreviousStep(1);
@@ -29,21 +43,21 @@ function Form() {
         <StepsContentContainer>
           {STEPS[currentStep]}
           <ButtonWrapper>
-            {currentStep === 3 ? (
+            {currentStep === lastStep ? (
               <Button variant={"success"} onClick={handleNextStepClick}>
                 Confirm
               </Button>
             ) : (
-              <>
+              currentStep < lastStep && (
                 <Button variant={"fill"} onClick={handleNextStepClick}>
                   Next Step
                 </Button>
-                {currentStep > 0 && (
-                  <Button variant={"ghost"} onClick={handleBackStepClick}>
-                    Go Back
-                  </Button>
-                )}
-              </>
+              )
+            )}
+            {currentStep > 0 && currentStep < 4 && (
+              <Button variant={"ghost"} onClick={handleBackStepClick}>
+                Go Back
+              </Button>
             )}
           </ButtonWrapper>
         </StepsContentContainer>
@@ -57,7 +71,7 @@ const STEPS = [
   <Step2 key={1} />,
   <Step3 key={3} />,
   <Step4 key={4} />,
-  <Step1 key={5} />,
+  <Thankyou key={5} />,
 ];
 
 const FormContainer = styled.div`
@@ -98,3 +112,26 @@ const ButtonWrapper = styled.div`
 `;
 
 export default Form;
+
+{
+  /* <ButtonWrapper>
+            {currentStep === lastStep ? (
+              <Button variant={"success"} onClick={handleNextStepClick}>
+                Confirm
+              </Button>
+            ) : (
+              <>
+                {currentStep < lastStep && (
+                  <Button variant={"fill"} onClick={handleNextStepClick}>
+                    Next Step
+                  </Button>
+                )}
+                {currentStep > 0 && (
+                  <Button variant={"ghost"} onClick={handleBackStepClick}>
+                    Go Back
+                  </Button>
+                )}
+              </>
+            )}
+          </ButtonWrapper> */
+}

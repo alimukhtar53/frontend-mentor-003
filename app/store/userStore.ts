@@ -150,7 +150,7 @@ const useStore = create<UserState>((set) => ({
         },
       },
       userSelectedOptions: {},
-      currentStep: 1,
+      currentStep: 0,
     });
   },
 }));
