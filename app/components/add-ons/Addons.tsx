@@ -12,6 +12,7 @@ function Addons() {
   const { step2, step3 } = userInitialInfo;
   const { isYearly } = step2;
   const { addons } = step3;
+  const planDurationPlaceholder = isYearly ? "yr" : "mo";
 
   return (
     <AddonsWrapper>
@@ -24,7 +25,10 @@ function Addons() {
                 <AddonTitle>{addon.title}</AddonTitle>
                 <AddonDescription>{ADDONINFO[addon.title]}</AddonDescription>
               </AddonDetails>
-              <PriceTag>+${getPlanValue(addon.value, isYearly)}/mo</PriceTag>
+              <PriceTag>
+                +${getPlanValue(addon.value, isYearly)}/
+                {planDurationPlaceholder}
+              </PriceTag>
             </AddonContent>
           </Addon>
         </div>

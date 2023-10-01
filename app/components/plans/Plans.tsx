@@ -1,6 +1,6 @@
 import useStore, { Plan } from "app/store/userStore";
 import Image from "next/image";
-import React, { useState } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import arcadeIcon from "app/assets/images/icon-arcade.svg";
 import advancedIcon from "app/assets/images/icon-advanced.svg";
@@ -12,6 +12,7 @@ function Plans() {
   const { userInitialInfo, changePlanType, changePlanDuration } = useStore();
   const { step2 } = userInitialInfo;
   const { plans, planType, isYearly } = step2;
+  const planDurationPlaceholder = isYearly ? "yr" : "mo";
 
   // changing plan duration type e.g monthly/yearly
   const handleToggle = () => {
@@ -31,7 +32,10 @@ function Plans() {
                 ></Image>
                 <div>
                   <Title>{plan.title}</Title>
-                  <PriceTag>${getPlanValue(plan.value, isYearly)}/mo</PriceTag>
+                  <PriceTag>
+                    ${getPlanValue(plan.value, isYearly)}/
+                    {planDurationPlaceholder}
+                  </PriceTag>
                   {isYearly && (
                     <DiscountedPlaceholder>2 months free</DiscountedPlaceholder>
                   )}
