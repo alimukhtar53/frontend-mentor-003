@@ -3,6 +3,7 @@ import useStore from "app/store/userStore";
 import { useState } from "react";
 import styled from "styled-components";
 import Checkbox from "../ui-elements/CheckBox";
+import { device } from "app/lib/device";
 
 function Addons() {
   // const [isChecked, setIsChecked] = useState(false);
@@ -85,6 +86,10 @@ const Addon = styled.div<{ ischecked: string }>`
     props.ischecked === "true"
       ? "var(--very-light-grey, #F8F9FF)"
       : "var(--white, #fff)"};
+
+  @media (${device.md}) {
+    max-height: 62px;
+  }
 `;
 const AddonContent = styled.div`
   display: grid;
@@ -94,6 +99,12 @@ const AddonContent = styled.div`
   height: 100%;
   align-items: center;
   gap: 24px;
+
+  @media (${device.md}) {
+    padding-right: 16px;
+    padding-left: 16px;
+    gap: 16px;
+  }
 `;
 const AddonDetails = styled.div`
   display: flex;
@@ -101,21 +112,31 @@ const AddonDetails = styled.div`
   gap: 7px;
   justify-content: center;
   align-items: start;
+  @media (${device.md}) {
+    gap: 3px;
+  }
 `;
-const AddonTitle = styled.div`
+const AddonTitle = styled.p`
   color: var(--denim, #022959);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  @media (${device.md}) {
+    font-size: 14px;
+  }
 `;
 
-const AddonDescription = styled.div`
+const AddonDescription = styled.p`
   color: var(--grey, #9699aa);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  @media (${device.md}) {
+    font-size: 12px;
+  }
 `;
 const PriceTag = styled.div`
   color: var(--purple, #483eff);
