@@ -1,4 +1,4 @@
-import thankyou from "app/assets/images/icon-thank-you.svg";
+import thankyou from "public/images/icon-thank-you.svg";
 import Image from "next/image";
 import styled from "styled-components";
 import Description from "../ui-elements/Description";

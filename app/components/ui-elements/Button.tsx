@@ -1,4 +1,6 @@
+import { device } from "app/lib/device";
 import React, { ButtonHTMLAttributes } from "react";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 
 type ButtonVariant = "fill" | "ghost" | "success";
@@ -8,6 +10,9 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 function Button({ variant, children = "Button", ...restProps }: Props) {
+  const isTabletOrMobile = useMediaQuery({
+    query: device.md,
+  });
   let Component: React.ComponentType<any>;
   if (variant === "fill") Component = FillButton;
   else if (variant === "ghost") Component = GhostButton;
@@ -29,6 +34,11 @@ const ButtonBase = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.2s;
+
+  @media (${device.md}) {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
 `;
 
 const FillButton = styled(ButtonBase)`

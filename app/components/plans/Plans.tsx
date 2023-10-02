@@ -1,6 +1,6 @@
-import advancedIcon from "app/assets/images/icon-advanced.svg";
-import arcadeIcon from "app/assets/images/icon-arcade.svg";
-import proIcon from "app/assets/images/icon-pro.svg";
+import advancedIcon from "/public/images/icon-advanced.svg";
+import arcadeIcon from "/public/images/icon-arcade.svg";
+import proIcon from "/public/images/icon-pro.svg";
 import { getPlanValue } from "app/lib/getPlanPrice";
 import useStore, { Plan } from "app/store/userStore";
 import Image from "next/image";

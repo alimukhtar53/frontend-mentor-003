@@ -1,9 +1,16 @@
 import Form from "@/components/Form";
+import dynamic from "next/dynamic";
 
-export default function Home() {
+const Home = () => {
+  const DynamicForm = dynamic(() => import("@/components/Form"), {
+    ssr: false,
+  });
+
   return (
     <div>
-      <Form />
+      <DynamicForm />
     </div>
   );
-}
+};
+
+export default Home;

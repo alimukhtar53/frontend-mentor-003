@@ -1,45 +1,81 @@
+"use client";
 import { listOfSteps } from "app/lib/listOfsteps";
 import Image from "next/image";
 import styled from "styled-components";
 import sidebarDesktop from "../assets/images/bg-sidebar-desktop.svg";
+import { device } from "app/lib/device";
+import { useMediaQuery } from "react-responsive";
+const sidebarMobile = "/images/bg-sidebar-mobile.svg";
 
 interface Props {
   currentStep: number;
 }
 
 function Sidebar({ currentStep }: Props) {
+  const isTabletOrMobile = useMediaQuery({
+    query: device.md,
+  });
+
+  const sidebarDesktop = "/images/bg-sidebar-desktop.svg";
   return (
-    <SidebarWrapper>
-      <Image src={sidebarDesktop} alt={"sidebar-desktop"} priority={true} />
-      <ListWrapper>
-        {listOfSteps.map((item, index) => (
-          <ListItem key={index}>
-            <Count currentstep={currentStep} currentindex={index}>
-              {index + 1}
-            </Count>
-            <StepsInfo>
-              <Step>Step {index + 1}</Step>
-              <StepTitle>{item}</StepTitle>
-            </StepsInfo>
-          </ListItem>
-        ))}
-      </ListWrapper>
-    </SidebarWrapper>
+    <>
+      <SidebarWrapper imagedesktop={sidebarDesktop} imagemobile={sidebarMobile}>
+        {/* <SideBarImage ></SideBarImage> */}
+        {/* <Image src={sidebarDesktop} alt={"sidebar-desktop"} priority={true} /> */}
+        <ListWrapper>
+          {listOfSteps.map((item, index) => (
+            <ListItem key={index}>
+              <Count currentstep={currentStep} currentindex={index}>
+                {index + 1}
+              </Count>
+              {!isTabletOrMobile && (
+                <StepsInfo>
+                  <Step>Step {index + 1}</Step>
+                  <StepTitle>{item}</StepTitle>
+                </StepsInfo>
+              )}
+            </ListItem>
+          ))}
+        </ListWrapper>
+      </SidebarWrapper>
+    </>
   );
 }
 
-const SidebarWrapper = styled.div`
-  position: relative;
-  pointer-events: none;
+const SidebarWrapper = styled.div<{
+  imagedesktop: string;
+  imagemobile: string;
+}>`
+  background-image: url(${(props) => props.imagedesktop});
+  background-repeat: no-repeat;
+  padding: 40px 32px 0 32px;
+  /* width: 100%;
+  height: 100%; */
+  @media (${device.md}) {
+    background-image: url(${(props) => props.imagemobile});
+    width: 100%;
+    min-height: 172px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+  }
 `;
 
 const ListWrapper = styled.div`
-  position: absolute;
   display: flex;
   flex-direction: column;
-  top: 40px;
-  left: 32px;
   gap: 2rem;
+  z-index: 1;
+  position: absolute;
+  @media (${device.md}) {
+    flex-direction: unset;
+    gap: 1rem;
+  }
 `;
 const ListItem = styled.div`
   display: flex;

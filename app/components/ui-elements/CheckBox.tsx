@@ -5,20 +5,20 @@ interface CheckboxChangeHandler {
 }
 interface Props {
   addon: Addons;
-  isChecked?: boolean;
+  isChecked: boolean;
   onCheckboxChange: CheckboxChangeHandler;
 }
 
 const Checkbox = ({ addon, isChecked, onCheckboxChange }: Props) => {
   const { userInitialInfo } = useStore();
   const { step3 } = userInitialInfo;
-  const { addons, selectedAddons } = step3;
+  const { addons } = step3;
+  const { selectedAddons } = step3;
   const { title } = addon;
 
   const handleCheckBoxChange = () => {
     onCheckboxChange(!isChecked);
 
-    // Update the user store based on the isChecked state
     if (!isChecked) {
       // If the checkbox is checked, add the value to the selectedAddons
       const addon = addons.find((addon) => addon.title === title);

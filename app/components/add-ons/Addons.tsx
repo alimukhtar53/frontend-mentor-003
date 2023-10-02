@@ -14,7 +14,9 @@ function Addons() {
 
   const [checkboxStates, setCheckboxStates] = useState(
     addons.reduce((acc: any, addon) => {
-      acc[addon.title] = false; // Initialize all checkboxes as unchecked
+      acc[addon.title] = step3.selectedAddons.some(
+        (selectedAddon) => selectedAddon.title === addon.title
+      );
       return acc;
     }, {})
   );
