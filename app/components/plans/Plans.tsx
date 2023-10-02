@@ -6,12 +6,17 @@ import useStore, { Plan } from "app/store/userStore";
 import Image from "next/image";
 import styled, { css } from "styled-components";
 import Spacer from "../ui-elements/Spacer";
+import { device } from "app/lib/device";
+import { useMediaQuery } from "react-responsive";
 
 function Plans() {
   const { userInitialInfo, changePlanType, changePlanDuration } = useStore();
   const { step2 } = userInitialInfo;
   const { plans, planType, isYearly } = step2;
   const planDurationPlaceholder = isYearly ? "yr" : "mo";
+  const isTabletOrMobile = useMediaQuery({
+    query: device.md,
+  });
 
   // changing plan duration type e.g monthly/yearly
   const handleToggle = () => {
@@ -44,7 +49,7 @@ function Plans() {
           </div>
         ))}
       </PlansWrapper>
-      <Spacer value={32} />
+      <Spacer value={isTabletOrMobile ? 24 : 32} />
       <PlanToggleWrapper>
         <span style={!isYearly ? { color: "#022959" } : {}}>Monthly</span>
         <Switch>
@@ -71,6 +76,11 @@ const ICONS: Record<Plan["title"], string> = {
 const PlansWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (${device.md}) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 const PlanCard = styled.div<{ plantype: string; plantitle: string }>`
@@ -81,7 +91,7 @@ const PlanCard = styled.div<{ plantype: string; plantitle: string }>`
   padding: 20px 16px;
   outline: 1px solid var(--Border-Color, #d6d9e6);
   background: var(--white, #fff);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
   cursor: pointer;
 
   ${(props) =>
@@ -91,16 +101,28 @@ const PlanCard = styled.div<{ plantype: string; plantitle: string }>`
       outline: 1px solid var(--Purple, #483eff);
       background: var(--Very-Light-Grey, #f8f9ff);
     `}
+
+  @media (${device.md}) {
+    max-height: 99px;
+    width: 100%;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
+  justify-content: space-between;
+
+  @media (${device.md}) {
+    flex-direction: unset;
+    justify-content: unset;
+    align-items: center;
+    gap: 14px;
+  }
 `;
 
-const Title = styled.span`
+const Title = styled.p`
   color: var(--denim, #022959);
   font-size: 16px;
   font-style: normal;
@@ -110,7 +132,7 @@ const Title = styled.span`
   text-transform: capitalize;
 `;
 
-const PriceTag = styled.div`
+const PriceTag = styled.p`
   color: var(--grey, #9699aa);
 
   font-size: 14px;
@@ -119,14 +141,14 @@ const PriceTag = styled.div`
   line-height: normal;
 `;
 
-const DiscountedPlaceholder = styled.span`
-  color: var(--Denim, #022959);
+const DiscountedPlaceholder = styled.p`
+  color: var(--denim, #022959);
 
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
   transition: all 0.3s ease;
+  margin-top: 3px;
 `;
 
 const PlanToggleWrapper = styled.div`
