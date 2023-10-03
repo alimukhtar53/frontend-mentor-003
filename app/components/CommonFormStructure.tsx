@@ -1,7 +1,7 @@
-import Step1 from "@/components/stepsInfo/Step1";
-import Step2 from "@/components/stepsInfo/Step2";
-import Step3 from "@/components/stepsInfo/Step3";
-import Step4 from "@/components/stepsInfo/Step4";
+import Step1 from "@/components/steps-info/Step1";
+import Step2 from "@/components/steps-info/Step2";
+import Step3 from "@/components/steps-info/Step3";
+import Step4 from "@/components/steps-info/Step4";
 import Thankyou from "@/components/thank-you/Thankyou";
 import { device } from "app/lib/device";
 import React from "react";
