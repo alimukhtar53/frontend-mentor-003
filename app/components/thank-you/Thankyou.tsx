@@ -5,14 +5,23 @@ import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
 import { device } from "app/lib/device";
+import { useMediaQuery } from "react-responsive";
+import useSpacerValue from "app/hooks/useSpacerValue";
 
 function Thankyou() {
+  const isTabletOrMobile = useMediaQuery({
+    query: device.md,
+  });
   return (
     <ThankyouWrapper>
-      <Image src={thankyou} height={80} alt="icon-thankyou" />
-      <Spacer value={32} />
+      <Image
+        src={thankyou}
+        height={isTabletOrMobile ? 56 : 80}
+        alt="icon-thankyou"
+      />
+      <Spacer value={isTabletOrMobile ? 24 : 32} />
       <Heading>Thank you!</Heading>
-      <Spacer value={9} />
+      <Spacer value={isTabletOrMobile ? 9 : 14} />
 
       <Description>
         Thanks for confirming your subscription! We hope you have fun using our
