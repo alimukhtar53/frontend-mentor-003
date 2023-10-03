@@ -1,5 +1,6 @@
 import usePlanTotal from "app/hooks/usePlanTotal";
 import usePlanValue from "app/hooks/usePlanValue";
+import { device } from "app/lib/device";
 import { getPlanValue } from "app/lib/getPlanPrice";
 import useStore from "app/store/userStore";
 import styled from "styled-components";
@@ -72,6 +73,11 @@ const SummaryContainer = styled.div`
 
   padding: 16px 24px 24px 24px;
 
+  @media (${device.md}) {
+    max-width: 295px;
+    padding: 16px;
+  }
+
   hr {
     margin-top: 24px;
     margin-bottom: 16px;
@@ -90,6 +96,9 @@ const PlanWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 7px;
+  @media (${device.md}) {
+    gap: 3px;
+  }
 `;
 const PlanTitle = styled.div`
   text-transform: capitalize;
@@ -98,6 +107,10 @@ const PlanTitle = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  @media (${device.md}) {
+    font-size: 14px;
+  }
 `;
 
 const PlanChange = styled.span`

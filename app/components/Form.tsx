@@ -60,7 +60,7 @@ function Form() {
         />
       )}
 
-      {isTabletOrMobile && (
+      {isTabletOrMobile && currentStep < totalSteps && (
         <MobileButtonWrapper>
           {currentStep === lastStep ? (
             <Button variant={"success"} onClick={handleNextStepClick}>
@@ -86,7 +86,7 @@ function Form() {
 
 const FormWrapper = styled.div`
   position: relative;
-  height: 172px;
+  height: calc(100vh - 742px);
   width: 343px;
 `;
 

@@ -4,6 +4,7 @@ import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import InputGroup from "../ui-elements/InputGroup";
 import Spacer from "../ui-elements/Spacer";
+import useSpacerValue from "app/hooks/useSpacerValue";
 
 function Step1() {
   const { userInitialInfo, setUserInfo } = useStore();
@@ -20,11 +21,11 @@ function Step1() {
   return (
     <>
       <Heading>Personal info</Heading>
-      <Spacer value={11}></Spacer>
+      <Spacer value={useSpacerValue("betweenTitle")}></Spacer>
       <Description>
         Please provide your name, email address, and phone number.
       </Description>
-      <Spacer value={35}></Spacer>
+      <Spacer value={useSpacerValue("betweenContent")}></Spacer>
       <InputGroup label="Name" htmlFor="name">
         <input
           type="text"
@@ -34,7 +35,7 @@ function Step1() {
           onChange={updateForm("name")}
         ></input>
       </InputGroup>
-      <Spacer value={24} />
+      <Spacer value={useSpacerValue("betweenInput")} />
       <InputGroup label="Email Address" htmlFor="email">
         <input
           type="email"
@@ -44,7 +45,7 @@ function Step1() {
           onChange={updateForm("emailAddress")}
         ></input>
       </InputGroup>
-      <Spacer value={24} />
+      <Spacer value={useSpacerValue("betweenInput")} />
       <InputGroup label="Phone Number" htmlFor="phone">
         <input
           type="tel"

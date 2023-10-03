@@ -4,14 +4,15 @@ import styled from "styled-components";
 import Description from "../ui-elements/Description";
 import Heading from "../ui-elements/Heading";
 import Spacer from "../ui-elements/Spacer";
+import { device } from "app/lib/device";
 
 function Thankyou() {
   return (
     <ThankyouWrapper>
-      <Image src={thankyou} alt="icon-thankyou" />
+      <Image src={thankyou} height={80} alt="icon-thankyou" />
       <Spacer value={32} />
       <Heading>Thank you!</Heading>
-      <Spacer value={14} />
+      <Spacer value={9} />
 
       <Description>
         Thanks for confirming your subscription! We hope you have fun using our
@@ -29,6 +30,11 @@ const ThankyouWrapper = styled.div`
   align-items: center;
   margin: auto;
   text-align: center;
+
+  @media (${device.md}) {
+    min-height: 400px;
+    font-size: 14px;
+  }
 `;
 
 export default Thankyou;

@@ -103,7 +103,7 @@ const PlanCard = styled.div<{ plantype: string; plantitle: string }>`
     `}
 
   @media (${device.md}) {
-    max-height: 99px;
+    max-height: 80px;
     width: 100%;
   }
 `;

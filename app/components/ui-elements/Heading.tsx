@@ -1,3 +1,4 @@
+import { device } from "app/lib/device";
 import React from "react";
 import styled from "styled-components";
 
@@ -17,6 +18,10 @@ const HeadingWrapper = styled.h1`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+
+  @media (${device.md}) {
+    font-size: 24px;
+  }
 `;
 
 export default Heading;

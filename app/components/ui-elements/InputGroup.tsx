@@ -1,3 +1,4 @@
+import { device } from "app/lib/device";
 import React from "react";
 import styled from "styled-components";
 
@@ -35,6 +36,9 @@ const Group = styled.div`
 
   label {
     margin-bottom: 8px;
+    @media (${device.md}) {
+      margin-bottom: 3px;
+    }
   }
 
   input {
@@ -54,6 +58,10 @@ const Group = styled.div`
       border-color: var(--purple);
     }
 
+    @media (${device.md}) {
+      font-size: 15px;
+    }
+
     &::placeholder {
       color: var(--Grey, #9699aa);
       font-family: Ubuntu;
@@ -61,6 +69,9 @@ const Group = styled.div`
       font-style: normal;
       font-weight: 500;
       line-height: 25px; /* 156.25% */
+      @media (${device.md}) {
+        font-size: 15px;
+      }
     }
   }
 `;

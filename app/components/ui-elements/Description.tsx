@@ -1,3 +1,4 @@
+import { device } from "app/lib/device";
 import React from "react";
 import styled from "styled-components";
 
